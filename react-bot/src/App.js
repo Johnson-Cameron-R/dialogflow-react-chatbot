@@ -52,7 +52,7 @@ class App extends Component {
       body: JSON.stringify({
         message: this.state.userMessage
       })
-    });
+    }).catch(error => console.error(error));
 
     this.setState({ userMessage: "" });
   };
@@ -60,10 +60,37 @@ class App extends Component {
   render() {
     const ChatBubble = (text, i, className) => {
       return (
-        <div key={`${className}-${i}`} className={`$className} chat-bubble`}>
+        <div key={`${className}-${i}`} className={`${className} chat-bubble`}>
           <span className="chat-content">{text}</span>
         </div>
       );
     };
+
+    const chat = this.state.conversation.map((e, index) =>
+      ChatBubble(e.text, index, e.user)
+    );
+
+    return (
+      <div>
+        <h1>React Chatbot</h1>
+        <div className="chat-window">
+          <div className="conversation-view">{chat}</div>
+          <div className="message-box">
+            <form onSubmit={this.handleSubmit}>
+              <input
+                value={this.state.userMessage}
+                onInput={this.handleChange}
+                className="text-input"
+                type="text"
+                autoFocus
+                placeholder="Type your message and hit Enter to send"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+export default App;
