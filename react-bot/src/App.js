@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Pusher from "pusher-js";
 import "./App.css";
+import ChatBot from "react-simple-chatbot";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     const pusher = new Pusher("d59ffce4898921421b72", {
       cluster: "us2",
-      encrypted: true
+      useTLS: true
     });
 
     const channel = pusher.subscribe("bot");
@@ -53,7 +54,6 @@ class App extends Component {
         message: this.state.userMessage
       })
     }).catch(error => console.error(error));
-
     this.setState({ userMessage: "" });
   };
 
@@ -69,6 +69,19 @@ class App extends Component {
     const chat = this.state.conversation.map((e, index) =>
       ChatBubble(e.text, index, e.user)
     );
+
+    const steps = [
+      {
+        id: "0",
+        message: "Welcome to react chatbot!",
+        trigger: "1"
+      },
+      {
+        id: "1",
+        message: "Bye!",
+        end: true
+      }
+    ];
 
     return (
       <div>
@@ -88,6 +101,14 @@ class App extends Component {
             </form>
           </div>
         </div>
+        <ChatBot
+          steps={steps}
+          headerTitle="Navigation Bot"
+          floating="true"
+          botDelay="0"
+          recognitionEnable={true}
+          userDelay="0"
+        />
       </div>
     );
   }
