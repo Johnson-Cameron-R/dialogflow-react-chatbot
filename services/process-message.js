@@ -2,7 +2,7 @@ const Dialogflow = require("dialogflow");
 const Pusher = require("pusher");
 const getWeatherInfo = require("./weather");
 
-// You can find your project ID in your Dialogflow agent settings
+// Dialogflow agent settings
 const projectId = "weather-1-ljqlrs";
 const sessionId = "123456";
 const languageCode = "en-US";
