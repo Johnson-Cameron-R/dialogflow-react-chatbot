@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import ChatBot from "react-simple-chatbot";
+import { Link } from "react-router-dom";
 
 const Navbot = () => {
   const theme = {
@@ -18,25 +19,47 @@ const Navbot = () => {
   const steps = [
     {
       id: "1",
-      message: "What number I am thinking?",
+      message: "What page would you like to see?",
       trigger: "2"
     },
     {
       id: "2",
       options: [
-        { value: 1, label: "Number 1", trigger: "4" },
-        { value: 2, label: "Number 2", trigger: "3" },
-        { value: 3, label: "Number 3", trigger: "3" }
+        { value: 1, label: "Home", trigger: "3" },
+        { value: 2, label: "WeatherBot", trigger: "4" },
+        { value: 3, label: "Chatbot", trigger: "5" }
+      ]
+    },
+    {
+      id: "Again",
+      message: "Would you like to go somewhere else?",
+      trigger: "Again-options"
+    },
+    {
+      id: "Again-options",
+      options: [
+        { value: 1, label: "Yes", trigger: "1" },
+        { value: 2, label: "No", trigger: "Done" }
       ]
     },
     {
       id: "3",
-      message: "Wrong answer, try again.",
-      trigger: "2"
+      component: <Link to="/">Home</Link>,
+      trigger: "Again"
     },
     {
       id: "4",
-      message: "Awesome! You are a telepath!",
+      component: <Link to="/weatherbot">WeatherBot</Link>,
+      trigger: "Again"
+    },
+    {
+      id: "5",
+      component: <Link to="/chatbot">ChatBot</Link>,
+      trigger: "Again"
+    },
+    {
+      id: "Done",
+      message: "Enjoy!",
       end: true
     }
   ];
@@ -47,9 +70,9 @@ const Navbot = () => {
         steps={steps}
         headerTitle="Navigation Bot"
         floating="true"
-        botDelay="0"
+        botDelay="750"
         recognitionEnable={true}
-        userDelay="0"
+        userDelay="500"
       />
     </ThemeProvider>
   );
