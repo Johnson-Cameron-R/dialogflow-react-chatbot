@@ -4,6 +4,15 @@ import ChatBot from "react-simple-chatbot";
 import { Link } from "react-router-dom";
 
 const Navbot = () => {
+  const config = {
+    headerTitle: "Navigation Bot",
+    placeholder: "I don't accept input here!",
+    floating: true,
+    botDelay: 750,
+    recognitionEnable: true,
+    userDelay: 500
+  };
+
   const theme = {
     background: "#f5f8fb",
     fontFamily: "Helvetica Neue",
@@ -27,7 +36,8 @@ const Navbot = () => {
       options: [
         { value: 1, label: "Home", trigger: "3" },
         { value: 2, label: "WeatherBot", trigger: "4" },
-        { value: 3, label: "Chatbot", trigger: "5" }
+        { value: 3, label: "ChatBot", trigger: "5" },
+        { value: 4, labal: "PizzaBot", trigger: "6" }
       ]
     },
     {
@@ -58,6 +68,11 @@ const Navbot = () => {
       trigger: "Again"
     },
     {
+      id: "6",
+      component: <Link to="/pizzabot">PizzaBot</Link>,
+      trigger: "Again"
+    },
+    {
       id: "Done",
       message: "Enjoy!",
       end: true
@@ -66,14 +81,7 @@ const Navbot = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ChatBot
-        steps={steps}
-        headerTitle="Navigation Bot"
-        floating="true"
-        botDelay="750"
-        recognitionEnable={true}
-        userDelay="500"
-      />
+      <ChatBot steps={steps} {...config} />
     </ThemeProvider>
   );
 };

@@ -4,6 +4,7 @@ import "./App.css";
 import NavBot from "../NavBot/NavBot.jsx";
 import WeatherBot from "../WeatherChatbot/WeatherBot";
 import Chat from "../FirebaseChatbot/Interface/Chat";
+import Pizza from "../PizzaBuilder/components/pizza";
 
 const App = () => (
   <Router>
@@ -17,6 +18,9 @@ const App = () => (
       </Route>
       <Route path="/chatbot">
         <Chat />
+      </Route>
+      <Route path="/pizzabot">
+        <Pizza />
       </Route>
     </Switch>
   </Router>
