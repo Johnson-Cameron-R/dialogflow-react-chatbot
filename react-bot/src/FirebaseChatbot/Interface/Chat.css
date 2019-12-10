@@ -8,14 +8,15 @@ body {
 .Chat {
   margin: auto;
   width: 800px;
-  height: 500px;
-  bottom: 25px;
-  right: 25px;
+  height: 100vh;
+  /* bottom: 25px;
+  right: 25px; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #fafafa;
   border-radius: 8px;
-  z-index: 11;
+  /* z-index: 11; */
   box-shadow: 2px 2px 15px #626262;
 }
 
@@ -59,7 +60,7 @@ body {
 
 .messages-list {
   padding: 20px 0;
-  max-width: 300px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   list-style: none;
@@ -68,13 +69,13 @@ body {
   overflow: auto;
 }
 
-.messages-container {
-  max-width: 300px;
+/* .messages-container {
+  max-width: 800px;
   width: 100%;
   margin: 0;
   flex-grow: 1;
   overflow: auto;
-}
+} */
 
 .messages-message {
   display: flex;
@@ -112,7 +113,7 @@ body {
 
 .message-content > .text {
   padding: 10px;
-  max-width: 200px;
+  max-width: 400px;
   overflow-wrap: break-word;
   margin: 0;
   border-radius: 12px;
@@ -127,7 +128,7 @@ body {
 
 form {
   display: flex;
-  width: 97%;
+  width: 100%;
   justify-content: space-between;
   max-width: 900px;
   margin: 5px auto;

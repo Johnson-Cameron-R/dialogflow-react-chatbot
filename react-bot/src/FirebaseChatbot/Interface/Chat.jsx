@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Messages from "./Messages";
 import Input from "./Input";
 import "./Chat.css";
@@ -60,9 +60,9 @@ function randomColor() {
 
 const Chat = props => {
   const [messages, setMessages] = useState([]);
-  const [member, setMember] = useState({
-    username: randomName(),
-    color: randomColor(),
+  const [member] = useState({
+    // username: randomName(),
+    // color: randomColor(),
     id: 2
   });
 
@@ -86,18 +86,11 @@ const Chat = props => {
     }
   };
 
-  // const styles = () => {
-  //   if (!props.isOpen) {
-  //     return { right: "-300px", overflow: "hidden" };
-  //   } else return {};
-  // };
-
   useEffect(() => {
-    // if (!user || user.preferred_username === "") return;
     const unsubscribe = firebase
       .firestore()
       .collection("chatbot")
-      .doc("user")
+      .doc("User")
       .collection(chatroom)
       .orderBy("timestamp")
       .onSnapshot(snapShot => {
@@ -110,9 +103,8 @@ const Chat = props => {
         });
         setMessages(hotmessages);
       });
-
     return () => unsubscribe();
-  }, []);
+  });
 
   return (
     <div className="Chat">

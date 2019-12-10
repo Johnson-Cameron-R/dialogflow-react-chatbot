@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Input = props => {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Input = props => {
           value={text}
           type="text"
           placeholder="Send a message!"
-          autoFocus="true"
+          autoFocus={true}
         />
         <button>Send</button>
       </form>
