@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FormInput = props => {
+const Input = props => {
   const [text, setText] = useState();
 
   const onSubmit = e => {
@@ -17,6 +17,7 @@ const FormInput = props => {
           value={text}
           type="text"
           placeholder="Send a message!"
+          autoFocus="true"
         />
         <button>Send</button>
       </form>
@@ -24,4 +25,4 @@ const FormInput = props => {
   );
 };
 
-export default FormInput;
+export default Input;

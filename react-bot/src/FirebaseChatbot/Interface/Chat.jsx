@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Messages from "./Messages";
-import FormInput from "./FormInput";
-import Header from "./Header";
+import Input from "./Input";
 import "./Chat.css";
 
 import firebase from "firebase/app";
@@ -69,8 +68,6 @@ const Chat = props => {
 
   const [chatroom, setChatroom] = useState("Default");
 
-  // const { user } = useContext();
-
   const onSendMessage = async message => {
     try {
       await fetch("http://localhost:5000/chatfirebase", {
@@ -119,9 +116,11 @@ const Chat = props => {
 
   return (
     <div className="Chat">
-      <Header onClick={props.onClick} chatroom={chatroom} />
+      <div className="Chat-header">
+        <h1 className="Chat-title">Small Talk Bot</h1>
+      </div>
       <Messages messages={messages} currentMember={member} />
-      <FormInput onSendMessage={onSendMessage} />
+      <Input onSendMessage={onSendMessage} />
     </div>
   );
 };

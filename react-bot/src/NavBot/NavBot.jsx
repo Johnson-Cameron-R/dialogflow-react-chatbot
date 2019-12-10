@@ -37,7 +37,7 @@ const Navbot = () => {
         { value: 1, label: "Home", trigger: "3" },
         { value: 2, label: "WeatherBot", trigger: "4" },
         { value: 3, label: "ChatBot", trigger: "5" },
-        { value: 4, labal: "PizzaBot", trigger: "6" }
+        { value: 4, label: "PizzaBot", trigger: "6" }
       ]
     },
     {

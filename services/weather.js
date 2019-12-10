@@ -1,5 +1,3 @@
-// weather.js
-
 const fetch = require("node-fetch");
 
 const { OPENWEATHER_API_KEY } = process.env;
@@ -11,8 +9,8 @@ const getWeatherInfo = city =>
     .then(response => response.json())
     .then(data => {
       const kelvin = data.main.temp;
-      const celsius = Math.round(kelvin - 273.15);
-      return celsius;
+      const farenheit = Math.round((kelvin - 273.15) * (9 / 5) + 32);
+      return farenheit;
     })
     .catch(error => console.log(error));
 

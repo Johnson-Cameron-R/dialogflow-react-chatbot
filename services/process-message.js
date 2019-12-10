@@ -23,10 +23,9 @@ const pusher = new Pusher({
 });
 
 const sessionClient = new Dialogflow.SessionsClient(config);
-
 const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
-const processMessage = async (message, res) => {
+const processMessage = (message, res) => {
   const request = {
     session: sessionPath,
     queryInput: {
@@ -37,35 +36,31 @@ const processMessage = async (message, res) => {
     }
   };
 
-  let resMessage = "";
-  try {
-    let responses = await sessionClient.detectIntent(request);
-    // .then(responses => {
-    const result = responses[0].queryResult;
+  sessionClient
+    .detectIntent(request)
+    .then(responses => {
+      const result = responses[0].queryResult;
 
-    // If the intent matches 'detect-city'
-    if (result.intent.displayName === "detect-city") {
-      const city = result.parameters.fields["geo-city"].stringValue;
+      // If the intent matches 'detect-city'
+      if (result.intent.displayName === "detect-city") {
+        const city = result.parameters.fields["geo-city"].stringValue;
 
-      // fetch the temperature from openweather map
-      let temperature = await getWeatherInfo(city);
-      resMessage = `The weather is ${city} is ${temperature}°C`;
-      pusher.trigger("bot", "bot-response", {
-        message: resMessage
+        // fetch the temperature from openweather map
+        return getWeatherInfo(city).then(temperature => {
+          return pusher.trigger("bot", "bot-response", {
+            message: `The weather in ${city} is ${temperature}°F`
+          });
+        });
+      }
+
+      return pusher.trigger("bot", "bot-response", {
+        message: result.fulfillmentText
       });
-    }
-
-    pusher.trigger("bot", "bot-response", {
-      message: result.fulfillmentText
+    })
+    .catch(err => {
+      console.error("ERROR:", err);
+      res.send(err);
     });
-    res.send({
-      message: resMessage
-    });
-  } catch (error) {
-    res.status(500).send({
-      message: error
-    });
-  }
 };
 
 module.exports = processMessage;

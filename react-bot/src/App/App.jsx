@@ -9,7 +9,7 @@ import Pizza from "../PizzaBuilder/components/pizza";
 const App = () => (
   <Router>
     <div>
-      <h1>Senior Project</h1>
+      {/* <h1>Senior Project</h1> */}
       <NavBot />
     </div>
     <Switch>

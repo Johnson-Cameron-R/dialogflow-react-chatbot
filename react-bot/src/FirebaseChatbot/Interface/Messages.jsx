@@ -1,43 +1,48 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const Messages = props => {
-  let messagesBottom;
-  const scrollToBottom = () => {
-    messagesBottom.scrollIntoView({ behavior: "smooth" });
-  };
+  // let messagesBottom;
+  // const scrollToBottom = () => {
+  //   messagesBottom.scrollIntoView({ behavior: "smooth" });
+  // };
 
   const renderMessage = (message, index) => {
+    // const { member, text } = message;
+    // const { currentMember } = this.props;
     const messageFromMe = message && message.name !== "chatbot";
     const className = messageFromMe
       ? "messages-message currentMember"
       : "messages-message";
     return (
       <li key={index} className={className}>
-        <span className="avatar" style={{ backgroundColor: "blue" }} />
+        <span className="avatar" style={{ backgroundColor: "grey" }} />
         <div className="message-content">
-          <div className="username">{message.name}</div>
+          <div className="username">{message.username}</div>
           <div className="text">{message.message}</div>
         </div>
       </li>
     );
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [props.messages]);
-
+  // useEffect(() => {
+  //   scrollToBottom();
+  // }, [props.messages]);
+  const { messages } = props;
   return (
     <div className="messages-container">
       <ul className="messages-list">
-        {props.messages.map((m, index) => renderMessage(m, index))}
+        {messages.map((m, index) => renderMessage(m, index))}
       </ul>
-      <div
-        ref={el => {
-          messagesBottom = el;
-        }}
-      ></div>
     </div>
   );
 };
 
 export default Messages;
+
+{
+  /* <div
+ref={el => {
+  messagesBottom = el;
+}}
+></div> */
+}
