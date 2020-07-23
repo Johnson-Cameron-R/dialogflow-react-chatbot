@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "2.4.4",
     "bootstrap": "4.5.0",
     "firebase": "^7.16.1",
+    "jquery": "3.5.1",
+    "popper.js": "1.16.1",
     "pusher-js": "5.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "^3.4.1",
     "react-simple-chatbot": "^0.6.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "typescript": "3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",

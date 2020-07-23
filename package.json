@@ -21,6 +21,8 @@
     "firebase-tools": "7.16.2",
     "node-fetch": "^2.6.0",
     "pusher": "3.0.1",
-    "react-bot": "^0.1.0"
+    "react": "0.14.0",
+    "react-bot": "^0.1.0",
+    "react-dom": "16.13.1"
   }
 }

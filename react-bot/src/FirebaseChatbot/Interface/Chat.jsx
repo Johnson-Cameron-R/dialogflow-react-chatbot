@@ -16,59 +16,22 @@ const firebaseconfig = {
   storageBucket: "fir-chatbot-7dbd3.appspot.com",
   messagingSenderId: "234623852447",
   appId: "1:234623852447:web:f07b4c9f7a6d15c748a7aa",
-  measurementId: "G-J7T6XCEDDV"
+  measurementId: "G-J7T6XCEDDV",
 };
 
 firebase.initializeApp(firebaseconfig);
 
-function randomName() {
-  const adjectives = [
-    "autumn",
-    "hidden",
-    "bitter",
-    "misty",
-    "silent",
-    "empty",
-    "dry",
-    "dark"
-  ];
-
-  const nouns = [
-    "waterfall",
-    "river",
-    "breeze",
-    "moon",
-    "rain",
-    "wind",
-    "sea",
-    "morning",
-    "snow",
-    "lake",
-    "sunset",
-    "pine",
-    "shadow"
-  ];
-
-  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  const noun = nouns[Math.floor(Math.random() * nouns.length)];
-  return adjective + noun;
-}
-
-function randomColor() {
-  return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
-}
-
-const Chat = props => {
+const Chat = (props) => {
   const [messages, setMessages] = useState([]);
   const [member] = useState({
     // username: randomName(),
     // color: randomColor(),
-    id: 2
+    id: 2,
   });
 
   const [chatroom, setChatroom] = useState("Default");
 
-  const onSendMessage = async message => {
+  const onSendMessage = async (message) => {
     try {
       await fetch("http://localhost:5000/chatfirebase", {
         method: "POST",
@@ -77,9 +40,9 @@ const Chat = props => {
           "Content-Type": "application/json",
           User: "User",
           "Given-Name": "Someone",
-          Chatroom: chatroom
+          Chatroom: chatroom,
         },
-        body: JSON.stringify({ message: message })
+        body: JSON.stringify({ message: message }),
       });
     } catch (error) {
       console.error(error);
@@ -93,12 +56,12 @@ const Chat = props => {
       .doc("User")
       .collection(chatroom)
       .orderBy("timestamp")
-      .onSnapshot(snapShot => {
+      .onSnapshot((snapShot) => {
         let hotmessages = [];
-        snapShot.docs.forEach(snapShot => {
+        snapShot.docs.forEach((snapShot) => {
           hotmessages = [
             ...hotmessages,
-            { uid: snapShot.id, ...snapShot.data() }
+            { uid: snapShot.id, ...snapShot.data() },
           ];
         });
         setMessages(hotmessages);
