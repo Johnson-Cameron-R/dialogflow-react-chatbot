@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.4.1",
+    "bootstrap": "4.5.0",
     "firebase": "^7.16.1",
-    "pusher-js": "^5.0.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-router-dom": "^5.1.2",
+    "pusher-js": "5.1.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0",
     "react-scripts": "^3.4.1",
     "react-simple-chatbot": "^0.6.1",
     "styled-components": "^4.4.1"

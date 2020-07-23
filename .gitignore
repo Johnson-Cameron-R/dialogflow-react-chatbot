@@ -1,3 +1,4 @@
 node_modules
 react-bot/node_modules
 variables.env
+npm-debug.log
