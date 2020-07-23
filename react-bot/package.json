@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "firebase": "^7.5.0",
+    "firebase": "^7.16.1",
     "pusher-js": "^5.0.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.4.1",
     "react-simple-chatbot": "^0.6.1",
     "styled-components": "^4.4.1"
   },
