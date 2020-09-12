@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "firebase": "^7.16.1",
     "firebase-tools": "7.16.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "pusher": "3.0.1",
     "react": "0.14.0",
     "react-bot": "^0.1.0",
